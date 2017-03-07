@@ -7,7 +7,7 @@ RUN yum -y install wget which sudo openssh-server openssh-clients
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -ivh epel-release-latest-7.noarch.rpm
 
-RUN yum -y group install 'Development Tools'
+RUN yum -y groupinstall 'Development Tools'
 
 RUN yum -y install openmpi-devel cmake redhat-lsb-core
 
