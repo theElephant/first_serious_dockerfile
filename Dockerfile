@@ -3,6 +3,7 @@ FROM centos:latest
 RUN yum -y update 
 
 RUN yum -y install wget which sudo openssh-server openssh-clients
+RUN yum install ntp
 	
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -ivh epel-release-latest-7.noarch.rpm
@@ -30,6 +31,7 @@ RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /home/builder/.bashrc
 
 RUN usermod -aG wheel builder
 RUN sed -i 's/^#[ \t]*%wheel[ \t]*ALL=(ALL)[ \t]*NOPASSWD:[ \t]*ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+RUN sed -i 's/.el.centos7/.el7/' /etc/rpm/macros.dist
 
 USER builder
 WORKDIR /home/builder
