@@ -3,7 +3,7 @@ FROM centos:latest
 RUN yum -y update 
 
 RUN yum -y install wget which sudo openssh-server openssh-clients
-RUN yum install ntp
+RUN yum -y install ntp
 	
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -ivh epel-release-latest-7.noarch.rpm
