@@ -24,7 +24,16 @@ RUN yum -y install \
 RUN useradd -ms /bin/bash builder
 RUN mkdir -p /home/builder/.ssh
 RUN chmod 700 /home/builder/.ssh
+RUN mkdir -p /home/builder/rpmbuild/RPMS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/BUILD
+RUN mkdir -p /home/builder/rpmbuild/RPMS/BUILDROOT
+RUN mkdir -p /home/builder/rpmbuild/RPMS/RPMS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SOURCES
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SPECS
+RUN mkdir -p /home/builder/rpmbuild/RPMS/SRPMS
+
 RUN chown -R builder:builder /home/builder
+
 
 RUN echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib" > /home/builder/.bashrc
 RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /home/builder/.bashrc
@@ -32,6 +41,8 @@ RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /home/builder/.bashrc
 RUN usermod -aG wheel builder
 RUN sed -i 's/^#[ \t]*%wheel[ \t]*ALL=(ALL)[ \t]*NOPASSWD:[ \t]*ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 RUN sed -i 's/.el.centos7/.el7/' /etc/rpm/macros.dist
+
+
 
 USER builder
 WORKDIR /home/builder
