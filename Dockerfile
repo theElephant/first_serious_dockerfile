@@ -40,7 +40,7 @@ RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /home/builder/.bashrc
 
 RUN usermod -aG wheel builder
 RUN sed -i 's/^#[ \t]*%wheel[ \t]*ALL=(ALL)[ \t]*NOPASSWD:[ \t]*ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-RUN sed -i 's/.el.centos7/.el7/' /etc/rpm/macros.dist
+RUN sed -i 's/.el.centos/.el7/' /etc/rpm/macros.dist
 
 
 
