@@ -15,11 +15,8 @@ RUN yum -y install openmpi-devel cmake redhat-lsb-core
 RUN yum -y install \
 	libXi-devel libXmu-devel libXrandr-devel  \
     libXinerama-devel libXcursor-devel mesa-libGLU-devel mesa-libGL-devel libX11
-    
-RUN yum -y install \
-	libjpeg-turbo-devel leveldb-devel openblas-devel  \
-    snappy-devel opencv-devel boost-devel gflags-devel glog-devel  \
-    lmdb-devel libpng-devel freetype-devel bc
+
+RUN yum clean all
 
 RUN useradd -ms /bin/bash builder
 RUN mkdir -p /home/builder/.ssh
